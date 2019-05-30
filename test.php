@@ -162,7 +162,7 @@ $pdf->Cell(176, 15, $outurl[$i], 0, 0, 'C');
 
 
 
-$pdf->output('F','YourResume.pdf');
+$pdf->output('I','YourResume.pdf');
 
 ?>
 
