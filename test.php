@@ -68,7 +68,7 @@ $xpos=$pdf->GetX();
 $ypos=$pdf->GetY();
 $pdf->SetXY(80,51);
 $pdf->SetFont('Times', 'B', 12); 
-$pdf->MultiCell($cellWidth,$cellHeight,$outsummary,1);
+$pdf->MultiCell($cellWidth,$cellHeight,$outsummary,0);
 
 $pdf->SetLineWidth(0.8);
 $xpos=$pdf->GetX();
