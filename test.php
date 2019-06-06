@@ -47,6 +47,8 @@ $pdf->MultiCell($cellWidthTitle,$cellHeightTitle,$outtitle,0);
 $pdf->SetLineWidth(0.8);
 $xpos=$pdf->GetX();
 $ypos=$pdf->GetY();
+ if(!empty($_POST["summary"]))
+ {
 $pdf->Line(15, $ypos+10, 20, $ypos+10);
 
 $xpos=$pdf->GetX();
@@ -56,11 +58,17 @@ $pdf->Line(80, $ypos+10, 195, $ypos+10);
 $pdf->SetLineWidth(0.2);
 
 
-$pdf->Ln(); 
+ $pdf->Ln(); 
 $pdf->SetTextColor(12,12,12);
 $pdf->SetFont('Times', 'B', 12); 
 $pdf->SetXY($xpos,$ypos+15);
 $pdf->Cell(50, 5, 'Carrer Objective', 0, 0, 'L'); 
+ }
+ else
+ {
+	 
+ }
+ 
 
 
 
@@ -69,7 +77,9 @@ $ypos=$pdf->GetY();
 $pdf->SetXY(80,51);
 $pdf->SetFont('Times', 'B', 12); 
 $pdf->MultiCell($cellWidth,$cellHeight,$outsummary,0);
-
+if(!empty($_POST["enexpemploye"][0]))
+{
+	
 $pdf->SetLineWidth(0.8);
 $xpos=$pdf->GetX();
 $ypos=$pdf->GetY();
@@ -80,7 +90,11 @@ $ypos=$pdf->GetY();
 
 $pdf->Line(80, $ypos+10, 195, $ypos+10);
 $pdf->SetLineWidth(0.2);
-
+}
+else
+{
+	
+}
 $xpos=$pdf->GetX();
 $ypos=$pdf->GetY();
 
@@ -100,16 +114,19 @@ $pdf->SetFont('Times', 'B', 12);
 $pdf->SetTextColor(224,92,11);
 $pdf->SetXY(80,36);
 $pdf->Cell(115, 5, $outemail, 0, 0, 'L'); 
-
+if(!empty($_POST["enexpemploye"][0]))
+{
 $pdf->SetTextColor(12,12,12);
-
-
 
 $pdf->Ln(); 
 $pdf->SetFont('Times', 'B', 12); 
 $pdf->SetXY($xpos,$ypos+15);
 $pdf->Cell(50, 5, 'Experience', 0, 0, 'L'); 
-
+}
+else
+{
+	
+}
 $xpos=$pdf->GetX();
 $ypos=$pdf->GetY();
 $y_var=$ypos;
@@ -138,19 +155,32 @@ $y_var=$y_var+30;
 }
 $xpos=$pdf->GetX();
 $ypos=$pdf->GetY();
+if(!  empty($_POST["enschool"][0]))
+{
 $pdf->SetLineWidth(0.8);
 $pdf->Line(15, $y_var, 20, $y_var);
 
 
 $pdf->Line(80, $y_var, 195, $y_var);
+}
+else
+{
+	
+}
 $pdf->SetLineWidth(0.2);
+if(!empty($_POST["enschool"][0]))
+{
 $pdf->SetTextColor(12,12,12);
 $pdf->Ln(); 
 $pdf->SetFont('Times', 'B', 12); 
 $y_var=$y_var+5;
 $pdf->SetXY(15,$y_var);
 $pdf->Cell(50, 5, 'Education', 0, 0, 'L'); 
-
+}
+else
+{
+	
+}
 $xpos=$pdf->GetX();
 $ypos=$pdf->GetY();
 for($i=0;$i<count($outschool)-1;$i++)
@@ -193,82 +223,5 @@ $pdf->Cell(176, 15, $outurl[$i], 0, 0, 'C');
 
 
 $pdf->output();
-/*$pdf->Ln(); 
-$pdf->SetFont('Times', 'B', 10); 
-$pdf->Cell(176, 15, $outfinalurl, 0, 0, 'C'); 
 
-
-
-$pdf->Ln(); 
-$pdf->SetFont('Times', 'B', 10); 
-$pdf->Cell(176, 15, $outschool, 0, 0, 'C'); 
-
-
-$pdf->Ln(); 
-$pdf->SetFont('Times', 'B', 10); 
-$pdf->Cell(176, 15, $outsqual, 0, 0, 'C'); 
-
-$pdf->Ln(); 
-$pdf->SetFont('Times', 'B', 10); 
-$pdf->Cell(176, 15, $outdates, 0, 0, 'C'); 
-
-$pdf->Ln(); 
-$pdf->SetFont('Times', 'B', 10); 
-$pdf->Cell(176, 15, $outdesc, 0, 0, 'C'); 
-
-
-$pdf->Ln(); 
-$pdf->SetFont('Times', 'B', 10); 
-$pdf->Cell(176, 15, $outexpemp, 0, 0, 'C'); 
-
-
-$pdf->Ln(); 
-$pdf->SetFont('Times', 'B', 10); 
-$pdf->Cell(176, 15, $outexpjobtitle, 0, 0, 'C'); 
-
-$pdf->Ln(); 
-$pdf->SetFont('Times', 'B', 10); 
-$pdf->Cell(176, 15, $outexpdates, 0, 0, 'C'); 
-
-$pdf->Ln(); 
-$pdf->SetFont('Times', 'B', 10); 
-$pdf->Cell(176, 15, $outexpdesc, 0, 0, 'C'); 
-
-
-$pdf->Output(); 
-
-
-$i=0;
-for($i=0;$i<10;$i++)
-{
-	$eee[]=$i;
-}
-$pdf->Ln(); 
-$pdf->SetFont('Times', 'B', 10); 
-$pdf->Cell(176, 15, $eee[], 0, 0, 'C'); 
-
-
-for($j=0;$j<10;$j++)
-{
-$pdf->Ln(); 
-$pdf->SetFont('Times', 'B', 10); 
-$pdf->Cell(176, 15, $eee[$j], 0, 0, 'C'); 
-
-}
-$pdf->Output(); 
-	$i=0;
-	foreach($_POST["enschool"] as $key => $text_field){
-			$outschool=array($_POST["enschool"][$i]);
-	}
-	
-	for($j=0;$j<$i;$j++)
-	{
-$pdf->Ln(); 
-$pdf->SetFont('Times', 'B', 10); 
-$pdf->Cell(176, 15, $outschool[$i], 0, 0, 'C'); 
-		
-	
-	}
-*/
 ?>
-
