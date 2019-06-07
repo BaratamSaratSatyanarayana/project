@@ -222,6 +222,6 @@ $pdf->Cell(176, 15, $outurl[$i], 0, 0, 'C');
 
 
 
-$pdf->output();
+$pdf->output("I","youresume.pdf");
 
 ?>
